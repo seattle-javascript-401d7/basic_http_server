@@ -15,9 +15,18 @@ describe ('The HTTP Server', () => {
       expect(err).to.eql(null);
       expect(response.status).to.eql(200);
       expect(response).to.have.status(200);
-      expect(response.text).to.eql('What a good GET');
+      expect(response.text).to.eql('WOW GET');
       expect(response.type).to.eql(JSON);
       done();
+    });
+  });
+  it('should 404 on bad request', (done) => {
+    request('localhost:3000')
+    .get('/badroute')
+    .end((err, res) => {
+      expect(res.status).to.eql(404);
+      expect(res.text).to.eql('this is a 404 message');
+      }
     });
   });
 });
