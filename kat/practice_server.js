@@ -10,6 +10,17 @@ const server = module.exports = http.createServer((req, res) => {
     res.write('WOW GET');
     return res.end();
   }
+  if (req.method === 'POST' && req.url === '/someroute') {
+    req.on('data', (chunk) => {
+      var parsedChunk = JSON.parse(chunk);
+      res.writeHead(200, {
+        'Content-Type': 'text/plain'
+      });
+      res.write(parsedChunk.never);
+      return res.end();
+    });
+    return;
+  }
   // if it gets to here then it is a 404
   res.writeHead(404, {
     'Content-Type': 'text/plain'

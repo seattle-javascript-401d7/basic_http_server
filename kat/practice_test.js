@@ -26,7 +26,18 @@ describe ('The HTTP Server', () => {
     .end((err, res) => {
       expect(res.status).to.eql(404);
       expect(res.text).to.eql('this is a 404 message');
-      }
+      done();
+    });
+  });
+  it('should accept POST requests to /someroute', (done) => {
+    request('localhost:3000')
+    .post('/someroute')
+    .send({'never': 'gonna give you up'});
+    .end((err, res) => {
+      expect(err).to.eql(null);
+      expect(res.status).to.eql(200);
+      expect(res.text).to.eql('gonna give you up');
+      done();
     });
   });
 });
