@@ -1,0 +1,22 @@
+{
+  "name": "basic_http_server",
+  "version": "1.0.0",
+  "description": "A simple HTTP Server",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seattle-javascript-401d7/basic_http_server.git"
+  },
+  "author": "bonecrushereb@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/seattle-javascript-401d7/basic_http_server/issues"
+  },
+  "homepage": "https://github.com/seattle-javascript-401d7/basic_http_server#readme"
+}
