@@ -22,7 +22,7 @@ const server = module.exports = http.createServer((req, res) => {
   //     res.writeHead(200, {
   //       'Content=Type': 'application/json'
   //     })
-  //     res.write(JSON.stringify({name: parsedChunk}));
+  //     res.write(({name: parsedChunk}));
   //     return res.end();
   //   });
   //   return;
