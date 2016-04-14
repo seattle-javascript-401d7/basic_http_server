@@ -1,6 +1,7 @@
 const http = require('http');
 
 const server = module.exports = http.createServer((req, res) => {
+  var name = req.url.slice(7);
   if (req.method === 'GET' && req.url === '/') {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.write('Hello World');
@@ -15,33 +16,20 @@ const server = module.exports = http.createServer((req, res) => {
   }
 
   if (req.method === 'GET' && req.url.slice(0, 7) === '/greet/') {
-    var name = req.url.slice(7);
       res.writeHead(200, { 'Content-Type': 'text/plain' });
       res.write('Greetings ' + name);
       return res.end();
     }
 
-  if (req.method === 'POST' && req.url === '/greet/') {
+  if (req.method === 'POST' && req.url.slice(0, 7) === '/greet/') {
     req.on('data', (data) => {
       var parsed = JSON.parse(data);
-      res.writeHead(200, { 'Content-Type': 'text/plain' })
-      res.write(parsed.greeting);
+      res.writeHead(200, { 'Content-Type': 'text/plain' });
+      res.write(parsed.greeting + name);
       return res.end();
     });
     return;
   }
-
-//
-//   if (req.method === 'POST' && req.url === '/someroute') {
-//   req.on('data', (data) => {
-//     var parsed = JSON.parse(data);
-//     res.writeHead(200, { 'Content-Type': 'text/plain' });
-//     res.write(parsed.never);
-//     return res.end();
-//   })
-//   return;
-// }
-
 
   res.writeHead(404, { 'Content-Type': 'text/plain' });
   res.write('this is a 404 message, yo');

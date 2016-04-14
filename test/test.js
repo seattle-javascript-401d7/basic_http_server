@@ -27,15 +27,16 @@ describe('the HTTP server response', () => {
         done();
       });
   });
-  // it('should accept POST request to /greet/' + name, (done) => {
-  //   request('localhost:3000')
-  //     .post('/greet/' + name)
-  //     .send({'greeting': 'Hello ' + name})
-  //     .end((err, res) => {
-  //       expect(err).to.eql(null);
-  //       expect(res).to.have.status(200);
-  //       expect(res.text).to.eql('Hello ' + name);
-  //       done();
-  //     });
-  // });
+
+  it('should accept POST request to /greet/newUser takes it as JSON', (done) => {
+    request('localhost:3000')
+      .post('/greet/newUser')
+      .send({ 'greeting': 'Greetings ' })
+      .end((err, res) => {
+        expect(err).to.eql(null);
+        expect(res).to.have.status(200);
+        expect(res.text).to.eql('Greetings newUser');
+        done();
+      });
+  });
 });
