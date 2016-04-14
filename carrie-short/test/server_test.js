@@ -6,7 +6,16 @@ const request = chai.request;
 require(__dirname + '/../lib/server');
 
 describe('the http server', () => {
-  it('should accept GET requests to /time');
+  it('should accept GET requests to /time', (done) => {
+    request('localhost:3000')
+    .get('/time')
+    .end((err, res) => {
+      expect(err).to.eql(null);
+      expect(res).to.have.status(200);
+      expect(res.text).to.eql('' + new Date());
+      done();
+    });
+  });
   it('should accept GET requests to /greeting/name');
   it('should 404 on bad requests');
   it('should accept post requests from /greeting');
