@@ -20,7 +20,9 @@ const server = http.createServer((req, res) => {
       res.write('Hello ' + parsedD.name + '! Glad you are here!');
       return res.end();
     });
+    return;
   }
+
   res.writeHead(404, { 'Content-Type': 'test/html' });
   res.write('Sorry, we can\'t find what you are looking for, please try again.');
   return res.end();

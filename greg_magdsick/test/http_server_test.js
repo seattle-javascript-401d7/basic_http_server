@@ -33,14 +33,17 @@ describe('Basic HTTP server tests', () => {
     .end((err, res) => {
       expect(err).to.eql(null);
       expect(res).to.have.status(200);
-      expect(res.text).to.eql('Hellow postTest! Glad you are here!');
+      expect(res.text).to.eql('Hello postTest! Glad you are here!');
       done();
     });
   });
 
-  it('should return a 404 error to any other request');
-
-  // after(() => {
-  //   server.close();
-  // });
+  it('should return a 404 error to any other request', (done) => {
+    request('localhost:7000')
+    .get('/chop/')
+    .end((err, res) => { // eslint-disable-line handle-callback-err
+      expect(res).to.have.status(404);
+      done();
+    });
+  });
 });
