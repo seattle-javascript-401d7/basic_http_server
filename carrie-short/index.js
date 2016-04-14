@@ -1,6 +1,6 @@
 require(__dirname + '/lib/server');
-var request = require('superagent');
-var name = process.argv[2] || 'Oh No Mr Bill';
+const request = require('superagent');
+const name = process.argv[2] || 'Oh No Mr Bill';
 request
   .post('http://localhost:3000/greet')
   .send({ 'name': name })
