@@ -4,7 +4,7 @@ var vanillaRoutes = function(request, response) {
     response.writeHead(200, { 'Content-Type': 'text/html' });
     response.write('<h1>' + currentTime + '</h1>');
     console.log();
-    response.end();
+    return response.end();
   }
 
   if (request.url.indexOf('/greet') === 0 && request.method === 'GET') {
@@ -13,7 +13,7 @@ var vanillaRoutes = function(request, response) {
     var name = extractName.slice(1);
     response.writeHead(200, { 'Content-Type': 'text/html' });
     response.write('<h1>Hello ' + name + '</h1>');
-    response.end();
+    return response.end();
   }
 
   if (request.url === '/greet' && request.method === 'POST') {
@@ -22,8 +22,9 @@ var vanillaRoutes = function(request, response) {
       console.log(name);
       response.writeHead(200, { 'Content-type': 'text/html' });
       response.write('<h1>Hello ' + name + '</h1>');
-      response.end();
+      return response.end();
     });
+    return;
   }
 };
 
