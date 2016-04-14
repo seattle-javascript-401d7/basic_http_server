@@ -4,13 +4,13 @@ const slothbearHttp = http.createServer((req, res) => {
   if (req.url === '/time') {
     var ct = new Date();
     res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.write(ct.toString());
+    res.write(ct.toString() + '\n');
     return res.end();
   }
 
   if (req.method === 'GET' && req.url.startsWith('/greet/')) {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.write('hello ' + req.url.split('/')[2]);
+    res.write('hello ' + req.url.split('/')[2] + '\n');
     return res.end();
   }
 
