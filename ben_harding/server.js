@@ -17,8 +17,7 @@ const slothbearHttp = http.createServer((req, res) => {
   if (req.method === 'POST' && req.url === '/greet') {
     req.on('data', (data) => {
       res.writeHead(200, { 'Content-Type': 'text/plain' });
-      var name = JSON.parse(data).name;
-      res.write('hello ' + name);
+      res.write('hello ' + JSON.parse(data).name);
       return res.end();
     });
     return;
