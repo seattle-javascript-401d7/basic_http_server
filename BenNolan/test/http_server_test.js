@@ -7,8 +7,9 @@ const server = require(__dirname + '/../lib/server');
 
 describe('Server is running', () => {
   after((done) => {
-    server.close();
-    done();
+    server.close(() => {
+        done();
+    });
   });
   it('should accept GET requests to /time', (done) => {
     var date = new Date();

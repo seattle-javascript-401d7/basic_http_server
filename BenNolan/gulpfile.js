@@ -7,7 +7,7 @@ var files = ['lib/**/*.js', 'test/**/*.js'];
 gulp.task('lint:test', () => {
   return gulp.src('./**/*test.js')
   .pipe(eslint({
-    envs : [
+    envs: [
       'mocha',
       'es6'
     ]
@@ -18,7 +18,7 @@ gulp.task('lint:test', () => {
 gulp.task('lint:nontest', () => {
   return gulp.src(files)
   .pipe(eslint({
-    envs : [
+    envs: [
       'es6'
     ]
   }))
