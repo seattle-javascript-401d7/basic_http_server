@@ -4,9 +4,16 @@ const chaiHTTP = require('chai-http');
 var expect = chai.expect;
 chai.use(chaiHTTP);
 
-require(__dirname + '/../server');
+const server = require(__dirname + '/../server');
 
 describe('server startup and routing', () => {
+
+  after((done) => {
+    server.close(() => {
+      done();
+    });
+  });
+
   it('should respond to GET at /time with the current time', (done) => {
     var time = new Date();
     var h1Time = '<h1>' + time + '</h1>';
