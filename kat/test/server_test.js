@@ -29,7 +29,7 @@ describe('The HTTP Server', () => {
   it('should accept POST requests to /greet', (done) => {
     request('localhost:3000')
     .post('/greet')
-    .send({'name': 'Kat'})
+    .send({ 'name': 'Kat' })
     .end((err, res) => {
       expect(err).to.eql(null);
       expect(res.status).to.eql(200);
@@ -41,7 +41,7 @@ describe('The HTTP Server', () => {
 it('should be 418 on a bad request', (done) => {
   request('localhost:3000')
   .get('/crackpot')
-  .end((err, response) => {
+  .end((err, response) => { // eslint-disable-line handle-callback-err
     expect(response.status).to.eql(418);
     expect(response.text).to.eql('418: I\'m a little teapot!');
     done();

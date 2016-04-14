@@ -1,6 +1,4 @@
-// const fs = require('fs');
 const http = require('http');
-
 
 const server = module.exports = http.createServer((req, res) => {
   if (req.method === 'GET' && req.url.indexOf('/greet/') > -1) {
