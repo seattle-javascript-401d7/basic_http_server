@@ -22,6 +22,7 @@ const slothbearHttp = http.createServer((req, res) => {
     });
     return;
   }
+
   res.writeHead(404, { 'Content-Type': 'text/plain' });
   res.write('404: slothbear not found');
   return res.end();
