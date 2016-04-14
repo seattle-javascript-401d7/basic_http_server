@@ -13,7 +13,7 @@ describe('slothbear http server', () => {
       var ct = new Date();
       expect(err).to.eql(null);
       expect(res).to.have.status(200);
-      expect(res.text).to.eql(ct.toString());
+      expect(res.text).to.eql(ct.toString() + '\n');
       done();
     });
   });
@@ -25,7 +25,7 @@ describe('slothbear http server', () => {
     .end((err, res) => {
       expect(err).to.eql(null);
       expect(res).to.have.status(200);
-      expect(res.text).to.eql('hello ' + name);
+      expect(res.text).to.eql('hello ' + name + '\n');
       done();
     });
   });
