@@ -26,6 +26,15 @@ describe('the http server', () => {
       done();
     });
   });
-  it('should 404 on bad requests');
+  it('should 404 on bad requests', (done) => {
+    request('localhost:3000')
+    .get('/badroute')
+    .end((err, res) => {
+      expect(err.toString()).to.eql('Error: Not Found');
+      expect(res).to.have.status(404);
+      expect(res.text).to.eql('404 - page does not exist');
+      done();
+    });
+  });
   it('should accept post requests from /greeting');
 });

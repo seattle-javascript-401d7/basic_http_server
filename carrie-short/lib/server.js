@@ -13,6 +13,9 @@ const server = http.createServer((req, res) => {
     res.write(handler.greet(splitUrl[2]));
     return res.end();
   }
+  res.writeHead(404, { 'Content-Type': 'text/plain' });
+  res.write('404 - page does not exist');
+  return res.end();
 });
 
 server.listen(3000, () => {
