@@ -16,7 +16,16 @@ describe('the http server', () => {
       done();
     });
   });
-  it('should accept GET requests to /greeting/name');
+  it('should accept GET requests to /greeting/name and greet name', (done) => {
+    request('localhost:3000')
+    .get('/greet/name')
+    .end((err, res) => {
+      expect(err).to.eql(null);
+      expect(res).to.have.status(200);
+      expect(res.text).to.eql('Hello ' + 'name');
+      done();
+    });
+  });
   it('should 404 on bad requests');
   it('should accept post requests from /greeting');
 });
