@@ -18,6 +18,17 @@ describe('Server is running', () => {
     });
   });
 
+  it('should accept GET reqeusts to /greet/user', (done) => {
+    request('localhost:3000')
+    .get('/greet/user')
+    .end((err, res) => {
+      expect(err).to.eql(null);
+      expect(res).to.have.status(200);
+      expect(res.text).to.eql('Greetings user!');
+      done();
+    });
+  });
+
   it('should 404 on bad requests', (done) => {
     request('localhost:3000')
     .get('/badroute')
@@ -29,12 +40,13 @@ describe('Server is running', () => {
   });
 
   it('should accept GET requests to /greet/user', (done) => {
+    var name = url.slice(7);
     request('localhost:3000')
-    .get('/greet')
+    .get('/greet/')
     .end((err, res) => {
       expect(err).to.eql(null);
       expect(res).to.have.status(200);
-      expect(res.text).to.eql('Greetings');
+      expect(res.text).to.eql('Greetings ' + name + '!');
       done();
     });
   });
