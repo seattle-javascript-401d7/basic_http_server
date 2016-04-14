@@ -1,4 +1,4 @@
-# TCP Server
+# HTTP Server
 
 ##Description
 This server listens for connections and provides a response.
