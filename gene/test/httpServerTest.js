@@ -28,7 +28,6 @@ describe('HTTP server', () => {
         expect(err).to.eql(null);
         expect(res).to.have.status(200);
         var date = new Date(res.text);
-        // test if res.body constitutes a valid Date
         expect(isNaN(date.valueOf())).to.eql(false);
         done();
       });
@@ -48,7 +47,7 @@ describe('HTTP server', () => {
   it('should respond to a POST request to /greet', (done) => {
     request('localhost:3000')
       .post('/greet')
-      .send({name: 'from the other side'})
+      .send({ name: 'from the other side' })
       .end((err, res) => {
         expect(err).to.eql(null);
         expect(res).to.have.status(200);
