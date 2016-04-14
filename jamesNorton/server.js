@@ -9,7 +9,7 @@ const server = http.createServer((req, res) => {
     return res.end();
   }
 
-  if (req.method === 'GET' && req.url.slice(0,7) === '/greet/') {
+  if (req.method === 'GET' && req.url.slice(0, 7) === '/greet/') {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.write('hello ' + name);
     return res.end();
