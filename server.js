@@ -25,8 +25,13 @@ http.createServer((req, res) => {
       let parsed = JSON.parse(data);
       res.writeHead(200, { 'Content-Type': 'text/plain' });
       res.write(parsed.name);
-      return res.end();
+      res.end();
     });
+    return;
   }
+
+  res.writeHead(404, { 'Content-Type': 'application/json' });
+  res.write('{"msg": "not found"}');
+  res.end();
 
 }).listen(3000, () => console.log('server is up!'));
