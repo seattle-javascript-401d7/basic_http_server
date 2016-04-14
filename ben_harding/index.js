@@ -1,1 +1,1 @@
-module.export = require('server');
+module.export = require(__dirname + '/server');
