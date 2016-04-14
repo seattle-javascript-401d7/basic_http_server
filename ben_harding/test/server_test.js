@@ -44,12 +44,12 @@ describe('slothbear http server', () => {
   });
 
   it('should 404 on bad requests', (done) => {
-  request('localhost:3000')
-  .get('/badroute')
-  .end((err, res) => {  // eslint-disable-line handle-callback-err
-    expect(res.status).to.eql(404);
-    expect(res.text).to.eql('404: slothbear not found');
-    done();
+    request('localhost:3000')
+    .get('/badroute')
+    .end((err, res ) => {  // eslint-disable-line handle-callback-err
+      expect(res.status).to.eql(404);
+      expect(res.text).to.eql('404: slothbear not found');
+      done();
     });
   });
 });
