@@ -28,7 +28,7 @@ describe('Server is running', () => {
     });
   });
 
-  it('should accept GET requests to /greet', (done) => {
+  it('should accept GET requests to /greet/user', (done) => {
     request('localhost:3000')
     .get('/greet')
     .end((err, res) => {

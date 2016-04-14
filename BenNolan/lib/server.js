@@ -8,10 +8,11 @@ const server = module.exports = http.createServer((req, res) => {
     return res.end();
   }
 
-  if (req.method === 'GET' && req.url === '/greet') {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.write('Greetings');
-    return res.end();
+  if (req.method === 'GET' && req.url.slice(0, 7) === '/greet/') {
+    var name = req.url.slice(7);
+      res.writeHead(200, { 'Content-Type': 'text/plain' });
+      res.write('Greetings ' + name + '!');
+      return res.end();
   }
 
   res.writeHead(404, { 'Content-Type': 'text/html' });
