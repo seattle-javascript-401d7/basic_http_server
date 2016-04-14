@@ -1,5 +1,5 @@
 const http = require('http');
-const handler = require (__dirname + '/handlers');
+const handler = require(__dirname + '/handlers');
 
 const server = http.createServer((req, res) => {
   var splitUrl = req.url.split('/');
