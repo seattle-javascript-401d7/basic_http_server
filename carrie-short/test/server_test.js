@@ -36,5 +36,15 @@ describe('the http server', () => {
       done();
     });
   });
-  it('should accept post requests from /greeting');
+  it('should accept post requests from /greeting', (done) => {
+    request('localhost:3000')
+    .post('/greet')
+    .send({ 'name': 'name' })
+    .end((err, res) => {
+      expect(err).to.eql(null);
+      expect(res).to.have.status(200);
+      expect(res.text).to.eql('Hello name');
+      done();
+    });
+  });
 });

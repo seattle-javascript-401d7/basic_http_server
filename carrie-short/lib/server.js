@@ -13,6 +13,15 @@ const server = http.createServer((req, res) => {
     res.write(handler.greet(splitUrl[2]));
     return res.end();
   }
+  if (req.method === 'POST' && splitUrl[1] === 'greet') {
+    req.on('data', (data) => {
+      res.writeHead(200, { 'Content-Type': 'text/plain' });
+      var parsed = JSON.parse(data);
+      res.write('Hello ' + parsed.name);
+      return res.end();
+    });
+    return;
+  }
   res.writeHead(404, { 'Content-Type': 'text/plain' });
   res.write('404 - page does not exist');
   return res.end();
