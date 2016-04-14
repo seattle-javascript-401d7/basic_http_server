@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/seattle-javascript-401d7/basic_http_server/issues"
   },
-  "homepage": "https://github.com/seattle-javascript-401d7/basic_http_server#readme"
+  "homepage": "https://github.com/seattle-javascript-401d7/basic_http_server#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1"
+  }
 }
