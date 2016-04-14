@@ -6,7 +6,7 @@ request
   .send({ 'name': name })
   .end((err, res) => {
     if (err || !res.ok) {
-      console.log('Oh no! error');
+      console.log('There was an error');
     } else {
       console.log(res.text);
     }
