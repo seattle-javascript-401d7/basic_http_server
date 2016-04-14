@@ -17,6 +17,7 @@ describe('slothbear http server', () => {
       done();
     });
   });
+
   it('should accept GET requests to /greet/___something___', (done) => {
     var name = 'slothbear';
     request('localhost:3000')
@@ -28,5 +29,17 @@ describe('slothbear http server', () => {
       done();
     });
   });
-  it('should accept POST requests to /greet');
+
+  it('should accept POST requests to /greet', (done) => {
+    var object = { 'name': 'slothbear' };
+    request('localhost:3000')
+    .post('/greet')
+    .send(object)
+    .end((err, res) => {
+      expect(err).to.eql(null);
+      expect(res).to.have.status(200);
+      expect(res.text).to.eql('hello ' + object.name);
+      done();
+    });
+  });
 });
