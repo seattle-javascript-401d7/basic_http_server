@@ -23,7 +23,6 @@ const server = http.createServer((req, res) => {
     });
     return;
   }
-
 });
 
 server.listen(3000, () => {
