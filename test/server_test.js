@@ -4,7 +4,7 @@ const chaiHTTP = require('chai-http');
 chai.use(chaiHTTP);
 const expect = chai.expect;
 const request = chai.request;
-require(__dirname + '/../server');
+const server = require(__dirname + '/../server');
 
 let time = new Date().toString();
 
@@ -39,6 +39,12 @@ describe('Creating a successful HTTP server', () => {
       expect(err).to.eql(null);
       expect(res).to.have.status(200);
       expect(res.text).to.eql('Phillip');
+      done();
+    });
+  });
+
+  after((done) => {
+    server.close(() => {
       done();
     });
   });

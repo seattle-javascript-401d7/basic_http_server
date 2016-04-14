@@ -1,7 +1,7 @@
 'use strict';
 const http = require('http');
 
-http.createServer((req, res) => {
+module.exports = exports = http.createServer((req, res) => {
 
   let time = new Date().toString();
 
