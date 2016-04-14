@@ -1,4 +1,4 @@
-const http = require('http');
+const http = require('http'); // eslint-disable-line
 
 const server = module.exports = http.createServer((req, res) => {
   if (req.method === 'GET' && req.url.indexOf('/greet/') > -1) {
@@ -11,7 +11,6 @@ const server = module.exports = http.createServer((req, res) => {
     return res.end();
   }
   if (req.method === 'GET' && req.url === '/time') {
-    console.log(req.url);
     res.writeHead(200, {
       'Content-Type': 'text/plain'
     });
@@ -22,8 +21,6 @@ const server = module.exports = http.createServer((req, res) => {
     console.log(req.url);
     req.on('data', (chunk) => {
       var parsedChunk = JSON.parse(chunk);
-      console.log(parsedChunk);
-      console.log(parsedChunk.name);
       res.writeHead(200, {
         'Content-Type': 'text/plain'
       });
