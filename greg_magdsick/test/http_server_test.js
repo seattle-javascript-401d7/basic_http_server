@@ -3,9 +3,12 @@ const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 const expect = chai.expect;
 const request = chai.request;
-require(__dirname + '/../lib/http_server.js');
+const server = require(__dirname + '/../lib/http_server.js');
 
 describe('Basic HTTP server tests', () => {
+  after(() => {
+    server.close();
+  });
   it('should return time when sending GET request to /time', (done) => {
     request('localhost:7000')
     .get('/time')
