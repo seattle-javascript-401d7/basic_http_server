@@ -1,6 +1,6 @@
 const http = require('http');
 
-const server = http.createServer((req, res) => {
+const server = module.exports = http.createServer((req, res) => {
   if (req.method === 'GET' && req.url === '/time') {
     var time = new Date();
     res.writeHead(200, { 'Content-Type': 'text/html' });
