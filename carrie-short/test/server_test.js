@@ -6,7 +6,7 @@ const request = chai.request;
 require(__dirname + '/../lib/server');
 
 describe('the http server', () => {
-  it('should accept GET requests to /time', (done) => {
+  it('should accept GET requests to /time and respond with current time', (done) => {
     request('localhost:3000')
     .get('/time')
     .end((err, res) => {
