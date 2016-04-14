@@ -21,6 +21,28 @@ const server = module.exports = http.createServer((req, res) => {
       return res.end();
     }
 
+  if (req.method === 'POST' && req.url === '/greet/') {
+    req.on('data', (data) => {
+      var parsed = JSON.parse(data);
+      res.writeHead(200, { 'Content-Type': 'text/plain' })
+      res.write(parsed.greeting);
+      return res.end();
+    });
+    return;
+  }
+
+//
+//   if (req.method === 'POST' && req.url === '/someroute') {
+//   req.on('data', (data) => {
+//     var parsed = JSON.parse(data);
+//     res.writeHead(200, { 'Content-Type': 'text/plain' });
+//     res.write(parsed.never);
+//     return res.end();
+//   })
+//   return;
+// }
+
+
   res.writeHead(404, { 'Content-Type': 'text/plain' });
   res.write('this is a 404 message, yo');
   return res.end();

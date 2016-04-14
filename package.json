@@ -23,6 +23,7 @@
   "homepage": "https://github.com/Brandon-Parker/basic_http_server#readme",
   "devDependencies": {
     "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
     "gulp": "^3.9.1",
     "mocha": "^2.4.5"
   }
