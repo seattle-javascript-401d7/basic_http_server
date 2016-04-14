@@ -18,7 +18,7 @@ const server = http.createServer((req, res) => {
     req.on('data', data => {
       var parsed = JSON.parse(data);
       res.writeHead(200, { 'Content-Type' : 'text/plain' });
-      res.write(parsed.name);
+      res.write('hello ' + parsed.name);
       return res.end();
 
     });
