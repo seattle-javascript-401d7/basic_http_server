@@ -1,5 +1,6 @@
 const http = require('http');
 const server = http.createServer((req, res) => {
+  // Credit to Brandon Parker for URL finding.
   var name = req.url.slice(7);
 
   if (req.method === 'GET' && req.url === '/time') {
