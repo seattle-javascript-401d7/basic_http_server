@@ -18,4 +18,4 @@ It includes chaiHTTP tests for both routes, as well as a gulpfile and a package.
   * Open a browser
   * Navigate to localhost:3000/time to view the current server time
   * Navigate to localhost:3000/greet/<type your name> to have it greet you personally
-  * On the command line, type superagent localhost:3000/greet put {'("name": "Salmons")'}
+  * On the command line, type superagent localhost:3000/greet post '{"name": "Salmons"}'
