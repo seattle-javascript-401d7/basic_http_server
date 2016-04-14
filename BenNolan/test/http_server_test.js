@@ -3,9 +3,13 @@ const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 const expect = chai.expect;
 const request = chai.request;
-require(__dirname + '/../lib/server');
+const server = require(__dirname + '/../lib/server');
 
 describe('Server is running', () => {
+  after((done) => {
+    server.close();
+    done();
+  });
   it('should accept GET requests to /time', (done) => {
     var date = new Date();
     request('localhost:3000')
