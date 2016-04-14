@@ -1,6 +1,7 @@
 const http = require('http');
-
 const server = http.createServer((req, res) => {
+  var name = req.url.slice(7);
+
   if (req.method === 'GET' && req.url === '/time') {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     var time = new Date();
@@ -8,9 +9,9 @@ const server = http.createServer((req, res) => {
     return res.end();
   }
 
-  if (req.method === 'GET' && req.url === '/greet/maverick') {
+  if (req.method === 'GET' && req.url.slice(0,7) === '/greet/') {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.write('hello maverick');
+    res.write('hello ' + name);
     return res.end();
   }
 
@@ -23,6 +24,7 @@ const server = http.createServer((req, res) => {
     });
     return;
   }
+
 });
 
 server.listen(3000, () => {
