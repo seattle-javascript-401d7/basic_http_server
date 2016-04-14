@@ -5,6 +5,12 @@ var server = http.createServer((req, res) => {
   var pathArr = url.parse(req.url).pathname.split("/", 3);
   var name;
 
+  if (req.method === "GET" && req.url === "/") {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.write("Howdy bitches!");
+    return res.end();
+  }
+
   if (req.method === "GET" && req.url === "/time") {
     res.writeHead(200, { "Content-Type": "text/plain" });
     res.write(new Date().toUTCString());

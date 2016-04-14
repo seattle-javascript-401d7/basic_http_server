@@ -17,6 +17,17 @@ describe("server", () => {
     });
   });
 
+  it("should respond to / with a general greeting", (done) => {
+    request("localhost:3000")
+    .get("/")
+    .end((err, res) => {
+      expect(err).to.eql(err);
+      expect(res).to.have.status(200);
+      expect(res.text).to.eql("Howdy bitches!");
+      done();
+    });
+  });
+
   it("should respond to /time with the current server time", (done) => {
     request("localhost:3000")
     .get("/time")
