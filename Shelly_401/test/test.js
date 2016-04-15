@@ -26,5 +26,12 @@ describe('vanilla server test', ()=> {
     });
   });
 
-it('should accept POST requests')
+it('should accept POST requests', (done) =>{
+  request('localhost:3000')
+  .post('/greeting')
+  .send({'hello':'world'})
+  .end()
+  done();
+  }
+})
 });
