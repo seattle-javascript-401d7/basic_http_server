@@ -30,8 +30,12 @@ it('should accept POST requests', (done) =>{
   request('localhost:3000')
   .post('/greeting')
   .send({'hello':'world'})
-  .end()
-  done();
-  }
-})
+  .end((err, res) =>{
+    expect(err).to.eql(null);
+    expect(res).to.have.status(200);
+    expect(res.text).to.eql('world');
+    done();
+  });
+  // done();
+});
 });

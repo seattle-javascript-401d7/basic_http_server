@@ -27,7 +27,6 @@ store.write(data);
   var parsed = JSON.parse(data);
   console.log(parsed.hello);
 res.write(parsed.hello);
-res.write('x');
 return res.end();
 });
 return;
