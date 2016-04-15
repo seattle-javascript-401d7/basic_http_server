@@ -1,0 +1,2 @@
+# HTTP Server Assignment
+Run the server with `node index` or `node server.` Going to `localhost:3000` on your browser will return a greeting, and `localhost:3000/greet/[name]` will return a greeting to `[name]`. A post request can be made to `localhost:3000/greet` with a JSON object following the format: `'{"name":"[name]"}'`. It will also return a greeting to `[name]`. All other routes will result in a 404 page. Tests can be viewed with `gulp` or `gulp test`.
