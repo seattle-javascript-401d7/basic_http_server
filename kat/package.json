@@ -1,0 +1,29 @@
+{
+  "name": "basichtttpserver",
+  "version": "1.0.0",
+  "description": "Create a Vanilla HTTP server that gives you the time when you ask for it and greets you when you ask it to.",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "gulp-eslint": "^2.0.0",
+    "gulp": "^3.9.1",
+    "chai-http": "^2.0.1",  
+    "mocha": "^2.4.5"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "http",
+    "server",
+    "greet"
+  ],
+  "author": "Katherine Beame",
+  "license": "MIT"
+}
