@@ -1,7 +1,7 @@
 const http = require("http");
 const url = require("url");
 
-var server = http.createServer((req, res) => {
+var server = module.exports = http.createServer((req, res) => {
   var pathArr = url.parse(req.url).pathname.split("/", 3);
   var name;
 

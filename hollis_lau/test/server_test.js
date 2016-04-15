@@ -3,9 +3,15 @@ const chaiHttp = require("chai-http");
 chai.use(chaiHttp);
 const expect = chai.expect;
 const request = chai.request;
-require(__dirname + "/../server");
+var server = require(__dirname + "/../server");
 
 describe("server", () => {
+  after((done) => {
+    server.close(() => {
+      done();
+    });
+  });
+
   it("should respond 404 on bad requests", (done) => {
     request("localhost:3000")
     .get("/badroute")
