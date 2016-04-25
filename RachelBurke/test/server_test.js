@@ -17,26 +17,35 @@ describe('vanilla http server test', () => {
     });
   });
 
-  it('should accept a GET request to /greet/name', (done) => {
+  it('should accept a GET request to /greet', (done) => {
     request('localhost:3000')
-    .get('/greet/name')
+    .post('/greet')
+    .send({ 'name': 'Woman' })
     .end((err, res) => {
       expect(err).to.eql(null);
       expect(res.status).to.eql(200);
-      expect(res.text).to.eql('Hey name');
+      expect(res.text).to.eql('Woman');
     done();
   });
 });
 
-  it('should accept POST requests', (done) => {
+ it('should accept a GET request to /greet/name', (done) => {
+   request('localhost:3000')
+   .get('/greet/name')
+   .end((err, res) => {
+     expect(err).to.eql(null);
+     expect(res.status).to.eql(200);
+     expect(res.text).to.eql('Hey name');
+     done();
+   });
+ });
+
+  it('should be 418 on a bad request', (done) => {
     request('localhost:3000')
-    .post('/greeting')
-    .send({ 'name': 'Rachel' })
-    .end((err, res) => {
-      expect(err).to.eql(null);
-      expect(res.status).to.eql(200);
-      console.log(res.text);
-      expect(res.text).to.eql('Rachel');
+    .get('/keep calm')
+    .end((err, res) => { // eslint-disable-line handle-callback-err
+      expect(res.status).to.eql(418);
+      expect(res.txt).to.eql('418: Carry on.');
       done();
     });
   });
