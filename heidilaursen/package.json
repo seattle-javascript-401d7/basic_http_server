@@ -1,0 +1,23 @@
+{
+  "name": "heidilaursen",
+  "version": "1.0.0",
+  "description": "basic http server",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pnwlady/basic_http_server.git"
+  },
+  "author": "Heidi Laursen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pnwlady/basic_http_server/issues"
+  },
+  "homepage": "https://github.com/pnwlady/basic_http_server#readme"
+}
