@@ -1,8 +1,5 @@
 const http = require('http');
-
-var port = 3000;
-
-const server = exports.module = exports = http.createServer((req, res) => {
+const server = http.createServer((req, res) => {
 
   if (req.method === 'GET' && req.url === '/time') {
     var time = new Date();
@@ -12,15 +9,15 @@ const server = exports.module = exports = http.createServer((req, res) => {
     return res.end();
   }
 
-  if (req.method === 'GET' && req.url === '/greet/name') {
+  if (req.method === 'GET' && req.url.startsWith('/greet/')) {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.write('Hello ' + req.url.split('/')[2] + '\n');
-    res.end();
+    return res.end();
   }
 
-  if ((req.method === 'POST' || req.method === 'PUT') && req.url === '/greet/name') {
+  if (req.method === 'POST' && req.url === '/greet') {
     req.on('data', (data) => {
-      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.writeHead(200, { 'Content-Type': 'text/plain' });
       res.write('Hello ' + JSON.parse(data).name);
       return res.end();
     });
@@ -32,4 +29,4 @@ const server = exports.module = exports = http.createServer((req, res) => {
   return res.end();
 });
 
-server.listen(port, () => process.stdout.write('server is listening ... on ' + port));
+server.listen(3000, () => process.stdout.write('server is listening on 3000'));
