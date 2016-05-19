@@ -19,5 +19,13 @@
   "bugs": {
     "url": "https://github.com/pnwlady/basic_http_server/issues"
   },
-  "homepage": "https://github.com/pnwlady/basic_http_server#readme"
+  "homepage": "https://github.com/pnwlady/basic_http_server#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^2.0.0",
+    "gulp-mocha": "^2.2.0",
+    "mocha": "^2.4.5"
+  }
 }

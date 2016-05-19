@@ -1,30 +1,35 @@
-//pull module for http and fs
 const http = require('http');
-const fs = require('fs');
 
-//export this module for main page
-exports.server = http.createServer((req, res) => {
-  //url slice
-  var name = req.url.slice(7)
+var port = 3000;
 
-  if(req.method === 'GET' && (req.url === '/' || req.url === '/index.html' || req.url === '/index')) {
-    console.log('Requested index page');
-    res.writeHead(200, {'msg': 'hi world!'});
-    var index = fs.createReadStream(__dirname + '/../index.html');
-    return index.pipe(res);
-  } else if (req.method === 'GET' && req.url === '/time') {
-    console.log('Requested time: ' + new Date());
-    res.write('The current date and time of the server is: ' + new Date());
+const server = exports.module = exports = http.createServer((req, res) => {
+
+  if (req.method === 'GET' && req.url === '/time') {
+    var time = new Date();
+    time = time.toTimeString();
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.write(time);
+    return res.end();
+  }
+
+  if (req.method === 'GET' && req.url === '/greet/name') {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.write('Hello ' + req.url.split('/')[2] + '\n');
     res.end();
+  }
 
-    var fullData = '';
-
-    req.on('end', (data) => {
-      var jsonFormat = JSON.parse(fullData);
-      var jsonText = 'Hello, ' + jsonFormat.name + '.';
-      res.writeHead(200, {'msg': 'blah'});
-      res.write(jsonText);
+  if ((req.method === 'POST' || req.method === 'PUT') && req.url === '/greet/name') {
+    req.on('data', (data) => {
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.write('Hello ' + JSON.parse(data).name);
       return res.end();
     });
-    }
+    return;
+  }
+
+  res.writeHead(404, { 'Content-Type': 'text/plain' });
+  res.write('404 error');
+  return res.end();
 });
+
+server.listen(port, () => process.stdout.write('server is listening ... on ' + port));
