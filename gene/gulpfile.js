@@ -1,19 +1,13 @@
 var gulp = require('gulp');
 var eslint = require('gulp-eslint');
 var mocha = require('gulp-mocha');
-var gutil = require('gulp-util');
 
 gulp.task('mocha', () => {
-  return gulp.src(['test/*.js'], { read: false })
-  .pipe(mocha({ reporter: 'list' }))
-  .on('error', gutil.log);
+  return gulp.src(['test/*Test.js'])
+  .pipe(mocha());
 });
 
-gulp.task('watch-mocha', () => {
-  gulp.watch(['lib/**', 'test/**'], ['mocha']);
-});
-
-var files = ['**', '**/*'];
+var files = ['lib/**/*.js', 'test/**/*.js', 'gulpfile.js', 'server.js'];
 
 gulp.task('lint', () => {
   return gulp.src(files)
@@ -21,4 +15,4 @@ gulp.task('lint', () => {
   .pipe(eslint.format());
 });
 
-gulp.task('default', ['lint', 'watch-mocha']);
+gulp.task('default', ['lint', 'mocha']);

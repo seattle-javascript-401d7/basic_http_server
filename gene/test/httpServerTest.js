@@ -7,8 +7,10 @@ var request = chai.request;
 var server = require(__dirname + '/../server');
 
 describe('HTTP server', () => {
-  after(() => {
-    server.close();
+  after((done) => {
+    server.close(() => {
+      done();
+    });
   });
 
   it('should 404 on a page that does not exist', (done) => {
