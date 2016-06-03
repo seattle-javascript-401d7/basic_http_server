@@ -49,11 +49,11 @@ describe('HTTP server', () => {
   it('should respond to a POST request to /greet', (done) => {
     request('localhost:3000')
       .post('/greet')
-      .send({ name: 'from the other side' })
+      .send({ name: 'fromside' })
       .end((err, res) => {
         expect(err).to.eql(null);
         expect(res).to.have.status(200);
-        expect(res.text).to.eql('Hello from the other side');
+        expect(res.text).to.eql('Hello fromside');
         done();
       });
   });
